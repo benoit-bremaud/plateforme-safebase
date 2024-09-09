@@ -741,7 +741,7 @@ Admin --> (Gérer les quotas de stockage pour les sauvegardes)
 
 Le système **SafeBase** offre une solution robuste et complète pour la gestion des bases de données, la surveillance, et la gestion des sauvegardes. Grâce à son architecture modulaire et ses fonctionnalités clés, il garantit une gestion efficace des données critiques, tout en facilitant la tâche des administrateurs et en assurant une sécurité renforcée pour les bases de données.
 
-### Récapitulatif des fonctionnalités clés :
+### Récapitulatif des fonctionnalités clés
 
 1. **Gérer les bases de données (CRUD)** : SafeBase permet aux administrateurs de gérer toutes les opérations essentielles sur les bases de données, telles que la création, la modification, la suppression et la consultation.
 2. **Automatiser les sauvegardes** : Grâce à l'intégration des tâches CRON, les administrateurs peuvent automatiser les sauvegardes pour garantir la régularité des copies de sécurité.
@@ -755,7 +755,7 @@ Le système **SafeBase** offre une solution robuste et complète pour la gestion
 10. **Exporter et importer des bases de données** : SafeBase permet d'exporter et d'importer des bases de données pour faciliter les migrations et les restaurations à partir de fichiers externes.
 11. **Gérer les quotas de stockage pour les sauvegardes** : Afin de prévenir une utilisation excessive des ressources, les administrateurs peuvent définir des quotas de stockage pour les sauvegardes.
 
-### Conclusion finale :
+### Conclusion finale
 
 Grâce à son ensemble de fonctionnalités diversifiées, **SafeBase** répond aux besoins critiques de gestion des bases de données, tout en intégrant des mécanismes de surveillance, de sauvegarde et de restauration pour assurer une haute disponibilité des données. Cette étude des cas d'utilisation a permis de modéliser les interactions entre les acteurs du système et de représenter les différentes fonctionnalités via des diagrammes UML, offrant ainsi une vision claire de la structure du projet.
 
