@@ -483,7 +483,7 @@ Cette section décrit les mesures de sécurité à implémenter pour garantir qu
 
 Cette section décrit les exigences en matière de compatibilité pour SafeBase. L'application doit pouvoir fonctionner sur différentes plateformes et être accessible via plusieurs navigateurs et systèmes de gestion de bases de données, tout en assurant une expérience utilisateur fluide et cohérente.
 
-#### **Exigences** :
+#### **Exigences**
 
 - **Compatibilité avec les systèmes d'exploitation** :  
   - SafeBase doit être compatible avec les principaux systèmes d'exploitation, incluant :
@@ -514,7 +514,7 @@ Cette section décrit les exigences en matière de compatibilité pour SafeBase.
   - L'ensemble du système doit être conteneurisé à l'aide de **Docker**, garantissant ainsi une compatibilité maximale lors des déploiements sur différents environnements. Le fichier `docker-compose.yml` doit assurer l'orchestration des services nécessaires (backend, frontend, MySQL, PostgreSQL).
   - Les conteneurs doivent fonctionner de manière fluide sur des environnements Docker conformes aux standards, tels que **Docker Desktop** (Windows, macOS) et **Docker Engine** (Linux).
 
-#### **Méthodes de vérification** :
+#### **Méthodes de vérification**
 
 - **Tests de compatibilité multi-plateformes** :  
   - Effectuer des tests sur toutes les plateformes supportées (Linux, Windows, macOS) pour s'assurer que SafeBase fonctionne correctement sur chacun des systèmes d'exploitation sans modifications supplémentaires.
@@ -532,7 +532,7 @@ Cette section décrit les exigences en matière de compatibilité pour SafeBase.
 
 Cette section décrit les exigences liées à la disponibilité et à la résilience de SafeBase. Il est essentiel que le système fonctionne de manière continue, avec des mécanismes en place pour gérer les interruptions et garantir une reprise rapide après une panne. Ces exigences garantissent que SafeBase offre un haut niveau de fiabilité, avec un temps d’arrêt minimal et une disponibilité maximale.
 
-#### **Exigences** :
+#### **Exigences**
 
 - **SLA (Service Level Agreement)** :
   - SafeBase doit garantir une disponibilité d’au moins **99.9 %**, ce qui correspond à un maximum de **8 heures d’indisponibilité** par an.
@@ -555,7 +555,7 @@ Cette section décrit les exigences liées à la disponibilité et à la résili
   - Les administrateurs doivent recevoir des **alertes en temps réel** en cas de détection de panne ou d'interruption, via email ou une interface de gestion des alertes.
   - Les métriques de performance (temps de réponse, disponibilité) doivent être collectées et affichées dans un tableau de bord pour un suivi constant de l'état du système.
 
-#### **Méthodes de vérification** :
+#### **Méthodes de vérification**
 
 - **Tests de charge et de tolérance aux pannes** :
   - Des tests de charge doivent être effectués pour vérifier que le système peut gérer une forte demande sans interruption.
@@ -625,8 +625,8 @@ Le processus de validation suit les étapes suivantes :
    - Avant d’être soumis aux parties prenantes, le document est examiné par l’équipe de développement. Chaque membre effectue une première révision pour vérifier la faisabilité, la cohérence, et la complétude des exigences.
 
 2. **Gestion des révisions via GitHub** :
-   - Une branche dédiée (ex. : `revision-1`) est créée pour les révisions internes. Chaque membre de l’équipe peut proposer des modifications via des commits sur cette branche. 
-   - Une **Pull Request (PR)** est ensuite ouverte pour demander une révision des parties prenantes externes. Les parties prenantes peuvent commenter les lignes du document, proposer des modifications ou approuver directement les changements. 
+   - Une branche dédiée (ex. : `revision-1`) est créée pour les révisions internes. Chaque membre de l’équipe peut proposer des modifications via des commits sur cette branche.
+   - Une **Pull Request (PR)** est ensuite ouverte pour demander une révision des parties prenantes externes. Les parties prenantes peuvent commenter les lignes du document, proposer des modifications ou approuver directement les changements.
    - Si des changements sont demandés, la PR est mise à jour jusqu’à obtention de l’approbation finale.
 
 3. **Révision par les parties prenantes** :  
@@ -663,7 +663,7 @@ Une fois le document validé, les parties prenantes signent la version finale vi
 
 ---
 
-### Outils GitHub utilisés pour la révision et validation :
+### Outils GitHub utilisés pour la révision et validation
 
 1. **Branches pour isoler les révisions**.
 2. **Pull Requests (PR)** pour soumettre, réviser, et approuver les modifications.
