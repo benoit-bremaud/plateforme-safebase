@@ -1,10 +1,10 @@
 import { Connection, createConnection } from 'mysql2';
 
 const connection: Connection = createConnection({
-  host: process.env.MYSQL_HOST ?? 'db',  // Nom du service MySQL dans Docker Compose
-  user: process.env.MYSQL_USER ?? 'user',
-  password: process.env.MYSQL_PASSWORD ?? 'password',
-  database: process.env.MYSQL_DATABASE ?? 'safebase'
+  host: process.env.MYSQL_HOST ?? 'db',
+  user: process.env.MYSQL_USER ?? 'safebase_user',
+  password: process.env.MYSQL_PASSWORD ?? 'your_password',
+  database: process.env.MYSQL_DATABASE ?? 'safebase_db'
 });
 
 connection.connect((err) => {
