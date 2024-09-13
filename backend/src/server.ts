@@ -1,21 +1,23 @@
-import fastify from 'fastify';
+import Fastify from 'fastify';
+import db from './config/db'; // Importer la connexion MySQL
 
-const app = fastify({ logger: true });
+const fastify = Fastify({ logger: true });
 
-// Définir une route basique
-app.get('/', async (request, reply) => {
-  return { message: 'SafeBase API is running!' };
+fastify.get('/', async (request, reply) => {
+  db.query('SELECT 1 + 1 AS solution', (error, results) => {
+    if (error) {
+      reply.code(500).send('Erreur lors de la requête MySQL');
+    } else {
+      reply.send({ solution: results[0].solution });
+    }
+  });
 });
 
-// Fonction pour démarrer le serveur
-const start = async () => {
-  try {
-    await app.listen({ port: 3000 });
-    app.log.info(`Server running at http://localhost:3000`);
-  } catch (err) {
-    app.log.error(err);
+// Démarrage du serveur
+fastify.listen(3000, (err, address) => {
+  if (err) {
+    fastify.log.error(err);
     process.exit(1);
   }
-};
-
-start();
+  fastify.log.info(`Serveur en écoute sur ${address}`);
+});

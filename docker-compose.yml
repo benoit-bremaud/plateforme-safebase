@@ -1,0 +1,25 @@
+version: '3'
+services:
+  backend:
+    build: ./backend  # Chemin vers le Dockerfile du backend
+    volumes:
+      - ./backend:/app  # Mappage des fichiers pour le hot-reloading
+    ports:
+      - "3000:3000"  # Exposer le port 3000 en local
+    depends_on:
+      - db  # Dépendance à MySQL, s'assure que MySQL démarre avant le backend
+
+  db:
+    image: mysql:8.0  # Utilisation de l'image officielle MySQL
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: safebase
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"  # Exposer le port MySQL en local pour y accéder depuis l'extérieur
+    volumes:
+      - mysql_data:/var/lib/mysql  # Volume pour persister les données MySQL
+
+volumes:
+  mysql_data:
