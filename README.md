@@ -10,6 +10,7 @@ SafeBase est une solution complète de gestion de bases de données, de sauvegar
 - [Installation](#installation)
 - [Démarrage du projet](#démarrage-du-projet)
 - [Commandes Docker Compose courantes](#commandes-docker-compose-courantes)
+- [Intégration continue (CI)](#intégration-continue-ci)
 - [Structure du projet](#structure-du-projet)
 - [Contribution](#contribution)
 - [Licence](#licence)
@@ -21,13 +22,15 @@ SafeBase est une solution complète de gestion de bases de données, de sauvegar
 - Interface utilisateur en **Angular** pour la gestion en temps réel.
 - Utilisation de **MySQL** pour la gestion des données.
 - Intégration de **Docker Compose** pour faciliter le déploiement et l'exécution en local.
-  
+- **Intégration continue (CI)** pour automatiser les tests et vérifier la qualité du code.
+
 ## Technologies utilisées
 
 - **Fastify** : Backend performant pour les API REST.
 - **Angular** : Frontend moderne pour une gestion en temps réel.
 - **MySQL** : Base de données relationnelle pour stocker les données.
 - **Docker Compose** : Orchestration des services de l'application.
+- **GitHub Actions** : Pour l'intégration continue et les tests automatisés.
 - **TypeScript** : Utilisé à la fois dans le frontend et le backend pour améliorer la maintenabilité et la sécurité du code.
 
 ## Prérequis
@@ -113,6 +116,32 @@ Utilisez Docker Compose pour démarrer tous les services nécessaires à l'appli
   ```bash
   docker-compose ps
   ```
+
+## Intégration continue (CI)
+
+Le projet SafeBase utilise **GitHub Actions** pour l'intégration continue, afin d'assurer que chaque modification du code est automatiquement testée et validée avant d'être fusionnée dans les branches principales.
+
+### Workflows CI
+
+Le workflow CI est défini dans le fichier `.github/workflows/ci.yml`. Voici un résumé des jobs inclus :
+
+1. **backend-tests**
+   - Exécution des tests unitaires et des vérifications de style pour le backend (API Fastify).
+   - Utilise Node.js 18 pour garantir la compatibilité avec l'environnement Docker de production.
+
+2. **frontend-tests**
+   - Exécution des tests unitaires pour le frontend (Angular) ainsi que des tests end-to-end avec **Cypress**.
+   - Vérification de la qualité du code avec ESLint.
+
+Ces tests sont exécutés automatiquement à chaque **push** ou **pull request** vers les branches `main` ou `develop`. Les résultats sont affichés sous forme de badges de statut CI dans le fichier `README.md` principal du projet.
+
+### Badges de statut CI
+
+![Backend CI](https://github.com/benoit-bremaud/plateforme-safebase/actions/workflows/backend-ci.yml/badge.svg)
+![Frontend CI](https://github.com/benoit-bremaud/plateforme-safebase/actions/workflows/frontend-ci.yml/badge.svg)
+
+Ces badges indiqueront le statut actuel des builds backend et frontend (succès ou échec).
+
 
 ## Structure du projet
 
