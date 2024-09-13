@@ -15,10 +15,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:    
       - uses: actions/checkout@v2
+
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '18'
+          
+      # Ajouter une étape pour configurer les variables d'environnement depuis les secrets
+      - name: Set up environment variables
+        run: |
+          echo "DB_HOST=${{ secrets.PROD_DB_HOST }}" >> backend/.env
+          echo "DB_USER=${{ secrets.PROD_DB_USER }}" >> backend/.env
+          echo "DB_PASSWORD=${{ secrets.PROD_DB_PASSWORD }}" >> backend/.env
+          echo "CI_API_KEY=${{ secrets.CI_API_KEY }}" >> backend/.env
+          echo "CI_DB_PASSWORD=${{ secrets.CI_DB_PASSWORD }}" >> backend/.env
+
+      # Installer les dépendances du backend
       - run: cd backend && npm install
+
+      # Lancer les tests du backend
       - run: cd backend && npm test -- --passWithNoTests
+
+      # Lancer le linting
       - run: cd backend && npm run lint
