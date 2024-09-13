@@ -1,0 +1,25 @@
+name: Frontend CI
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  frontend-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+      - run: cd frontend && npm install
+      - run: cd frontend && npm test
+      - run: cd frontend && npm run lint
+      - run: npm run e2e  # Si Cypress est configuré pour les tests end-to-end
