@@ -1,33 +1,39 @@
+version: '3.8'
+
 services:
+  backend:
+    build: ./backend
+    ports:
+      - "3000:3000"
+    environment:
+      - MYSQL_HOST=db
+      - MYSQL_USER=safebase_user
+      - MYSQL_PASSWORD=your_password
+      - MYSQL_DATABASE=safebase_db
+    depends_on:
+      - db
+    networks:
+      - safebase-network
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "4200:4200"
+    networks:
+      - safebase-network
+
   db:
     image: mysql:8.0
     environment:
-      MYSQL_ROOT_PASSWORD: toor
-      MYSQL_DATABASE: safebase_db
-      MYSQL_USER: safebase_user
-      MYSQL_PASSWORD: your_password
+      - MYSQL_ROOT_PASSWORD=toor
+      - MYSQL_DATABASE=safebase_db
+      - MYSQL_USER=safebase_user
+      - MYSQL_PASSWORD=your_password
     ports:
       - "3307:3306"
-    volumes:
-      - mysql_data:/var/lib/mysql
-  
-  frontend:
-    build: ./frontend
-    volumes:
-      - ./frontend:/app
-    ports:
-      - "4200:4200"
-    depends_on:
-      - backend
-  
-  backend:
-    build: ./backend
-    volumes:
-      - ./backend:/app
-    ports:
-      - "3000:3000"
-    depends_on:
-      - db
+    networks:
+      - safebase-network
 
-volumes:
-  mysql_data:
+networks:
+  safebase-network:
+    driver: bridge

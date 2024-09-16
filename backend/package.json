@@ -5,8 +5,9 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/server.js",
-    "dev": "tsc-watch --onSuccess \"node dist/server.js\"",
-    "test": "jest --passWithNoTests"
+    "dev": "ts-node-dev --respawn src/server.ts",
+    "test": "jest --passWithNoTests",
+    "start:dev": "npm run dev"
   },
   "keywords": [],
   "author": "",
