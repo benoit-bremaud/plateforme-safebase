@@ -12,6 +12,7 @@ SafeBase est une solution complète de gestion de bases de données, de sauvegar
 - [Commandes Docker Compose courantes](#commandes-docker-compose-courantes)
 - [Intégration continue (CI)](#intégration-continue-ci)
 - [Structure du projet](#structure-du-projet)
+- [Gestion des variables d'environnement et des secrets](#gestion-des-variables-denvironnement-et-des-secrets)
 - [Contribution](#contribution)
 - [Licence](#licence)
 
@@ -89,15 +90,11 @@ Utilisez Docker Compose pour démarrer tous les services nécessaires à l'appli
   docker-compose up
   ```
 
-  Cette commande démarre tous les services définis dans le fichier `docker-compose.yml`.
-
 - **Arrêter les services** :
 
   ```bash
   docker-compose down
   ```
-
-  Cela arrête tous les services et supprime les conteneurs, les réseaux et les volumes créés.
 
 - **Voir les logs** :
 
@@ -133,16 +130,6 @@ Le workflow CI est défini dans le fichier `.github/workflows/ci.yml`. Voici un 
    - Exécution des tests unitaires pour le frontend (Angular) ainsi que des tests end-to-end avec **Cypress**.
    - Vérification de la qualité du code avec ESLint.
 
-Ces tests sont exécutés automatiquement à chaque **push** ou **pull request** vers les branches `main` ou `develop`. Les résultats sont affichés sous forme de badges de statut CI dans le fichier `README.md` principal du projet.
-
-### Badges de statut CI
-
-![Backend CI](https://github.com/benoit-bremaud/plateforme-safebase/actions/workflows/backend-ci.yml/badge.svg)
-![Frontend CI](https://github.com/benoit-bremaud/plateforme-safebase/actions/workflows/frontend-ci.yml/badge.svg)
-
-Ces badges indiqueront le statut actuel des builds backend et frontend (succès ou échec).
-
-
 ## Structure du projet
 
 Voici un aperçu de la structure du projet :
@@ -160,6 +147,42 @@ Voici un aperçu de la structure du projet :
 ├── docker-compose.yml      # Fichier Docker Compose pour orchestrer les services
 └── README.md               # Ce fichier
 ```
+
+## Gestion des variables d'environnement et des secrets
+
+### Configuration des fichiers `.env`
+
+Pour configurer les variables d'environnement en local, vous devez créer un fichier `.env` dans les répertoires **backend** et **frontend**.
+
+- Exemple pour **backend** : 
+
+```bash
+MYSQL_HOST=localhost
+MYSQL_USER=safebase_user
+MYSQL_PASSWORD=your_password
+MYSQL_DATABASE=safebase_db
+PORT=3000
+```
+
+- Exemple pour **frontend** :
+
+```bash
+API_URL=http://localhost:3000/api
+```
+
+Pour plus de détails, consultez la documentation sur [la configuration des fichiers `.env`](docs/env-configuration.md).
+
+### Gestion des secrets dans GitHub
+
+Pour les environnements de production et CI, les secrets doivent être stockés en toute sécurité dans **GitHub Secrets**. Cela inclut des informations comme les identifiants de base de données et les clés API.
+
+Pour plus d'informations sur la gestion des secrets, consultez [la documentation sur GitHub Secrets](docs/github-secrets.md).
+
+### Validation et tests
+
+Après avoir configuré les variables d'environnement ou les secrets, assurez-vous de valider leur bon fonctionnement via des tests.
+
+Pour en savoir plus sur la validation et les tests, consultez [la documentation sur la validation des variables et secrets](docs/validation-tests.md).
 
 ## Contribution
 
