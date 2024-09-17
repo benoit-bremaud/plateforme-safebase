@@ -1,21 +1,23 @@
-import { Connection, createConnection } from 'mysql2';
+import mysql from 'mysql2';
 
-import { dbConfig } from './env.config';
+export const dbConfig = {
+  host: process.env.MYSQL_HOST ?? 'localhost',
+  user: process.env.MYSQL_USER ?? 'root',
+  password: process.env.MYSQL_PASSWORD ?? 'your_password',
+  database: process.env.MYSQL_DATABASE ?? 'safebase_db',
+};
 
-// Import des configurations de la base de données
-
-const connection: Connection = createConnection({
+const connection = mysql.createConnection({
   host: dbConfig.host,
   user: dbConfig.user,
   password: dbConfig.password,
-  database: dbConfig.database
+  database: dbConfig.database,
 });
 
 connection.connect((err) => {
   if (err) {
-    console.log(err);
-    console.error('Erreur de connexion à la base de données MySQL:', err.message);
-    process.exit(1); // Quitter si la connexion échoue
+    console.error('Erreur de connexion à MySQL:', err.message);
+    process.exit(1);
   } else {
     console.log('Connecté à la base de données MySQL');
   }
